@@ -21,13 +21,15 @@
             flex-direction: column;
             align-items: center;
             padding: 20px;
+            /* Added padding-top so the fixed button doesn't overlap the top on small screens */
+            padding-top: 60px; 
         }
         
-        /* British Mode Button Styles */
+        /* British Mode Button Styles - Now Fixed to Top Right */
         .toggle-btn {
-            position: absolute;
+            position: fixed;
             top: 20px;
-            left: 20px;
+            right: 20px;
             background: var(--primary);
             color: var(--bg);
             border: none;
@@ -49,7 +51,6 @@
             max-width: 800px;
             width: 100%;
             text-align: center;
-            margin-top: 40px; /* Pushed down slightly to account for the absolute button */
         }
         .badge {
             background: #ca8a04;
@@ -116,26 +117,21 @@
 
         footer { margin-top: 60px; color: #64748b; font-size: 0.9rem; padding-bottom: 40px; }
 
-        /* Responsive tweak for button on small screens */
+        /* Mobile tweaks to keep it looking mint */
         @media (max-width: 768px) {
             .toggle-btn {
-                position: relative;
-                top: 0;
-                left: 0;
-                margin-bottom: 20px;
+                font-size: 0.9rem;
+                padding: 8px 16px;
+                top: 10px;
+                right: 10px;
             }
-            .container { margin-top: 10px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Toggle Button -->
     <button id="toggleBtn" class="toggle-btn" onclick="toggleMode()">🇬🇧 British Mode</button>
 
-    <!-- ========================================== -->
-    <!-- STANDARD CONTENT (Visible by Default)      -->
-    <!-- ========================================== -->
     <div id="standard-content" class="container">
         <div class="badge">🚧 WORK IN PROGRESS</div>
         
@@ -168,7 +164,6 @@
             </ul>
         </div>
 
-        <!-- НОВАТА КАРТА ЗА КОНТАКТИ -->
         <h2>Contact & Community</h2>
         <div class="card">
             <p>Follow the development or join our community:</p>
@@ -191,9 +186,6 @@
     </div>
 
 
-    <!-- ========================================== -->
-    <!-- BRITISH CONTENT (Hidden by Default)        -->
-    <!-- ========================================== -->
     <div id="british-content" class="container" style="display: none;">
         <div class="badge">🚧 HAVIN' A TINKER IN THE SHED 🚧</div>
         
@@ -226,7 +218,6 @@
             </ul>
         </div>
 
-        <!-- НОВАТА КАРТА ЗА КОНТАКТИ -->
         <h2>Give Us a Bell & Community</h2>
         <div class="card">
             <p>Stalk the development or pop down to our local (the community):</p>
@@ -248,7 +239,6 @@
         </footer>
     </div>
 
-    <!-- Logic for swapping the content -->
     <script>
         function toggleMode() {
             const stdContent = document.getElementById('standard-content');
