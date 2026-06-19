@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZentariOS | The Future of Simplicity</title>
+    <title>Bri-ishOS | The Future of Simplicity</title>
     <style>
         :root {
             --primary: #00d4ff;
@@ -22,10 +22,34 @@
             align-items: center;
             padding: 20px;
         }
+        
+        /* British Mode Button Styles */
+        .toggle-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--primary);
+            color: var(--bg);
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s, background 0.2s;
+            z-index: 1000;
+        }
+        .toggle-btn:hover {
+            background: #00b8e6;
+            transform: scale(1.05);
+        }
+
         .container {
             max-width: 800px;
             width: 100%;
             text-align: center;
+            margin-top: 40px; /* Pushed down slightly to account for the absolute button */
         }
         .badge {
             background: #ca8a04;
@@ -91,14 +115,31 @@
         }
 
         footer { margin-top: 60px; color: #64748b; font-size: 0.9rem; padding-bottom: 40px; }
+
+        /* Responsive tweak for button on small screens */
+        @media (max-width: 768px) {
+            .toggle-btn {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin-bottom: 20px;
+            }
+            .container { margin-top: 10px; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
+    <!-- Toggle Button -->
+    <button id="toggleBtn" class="toggle-btn" onclick="toggleMode()">🇬🇧 British Mode</button>
+
+    <!-- ========================================== -->
+    <!-- STANDARD CONTENT (Visible by Default)      -->
+    <!-- ========================================== -->
+    <div id="standard-content" class="container">
         <div class="badge">🚧 WORK IN PROGRESS</div>
         
-        <h1>ZentariOS</h1>
+        <h1>Bri-ishOS</h1>
         <p class="tagline">Powerful. Familiar. Effortless.</p>
 
         <div class="grid">
@@ -138,16 +179,96 @@
 
         <h2>Download</h2>
         <div class="download-box">
-            <p>ZentariOS is not yet available for public download.</p>
+            <p>Bri-ishOS is not yet available for public download.</p>
             <span class="btn-disabled">No ISO, yet</span>
         </div>
 
         <footer>
-            <p>2024 ZentariOS Project by yosifmoroz</p>
+            <p>2024 Bri-ishOS Project by yosifmoroz</p>
             <p>Gemini thought it was 2024🥀 btw this website is made by gemini✌️😭</p>
             <p>Fuck you Copilot</p>
         </footer>
     </div>
 
+
+    <!-- ========================================== -->
+    <!-- BRITISH CONTENT (Hidden by Default)        -->
+    <!-- ========================================== -->
+    <div id="british-content" class="container" style="display: none;">
+        <div class="badge">🚧 HAVIN' A TINKER IN THE SHED 🚧</div>
+        
+        <h1>Bri-ishOS</h1>
+        <p class="tagline">Proper mint. Right familiar. Easy peasy.</p>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Arch-Powered, Bruv</h3>
+                <p>Built wiv that Arch package manager (pacman) to get the bare latest kit, innit.</p>
+            </div>
+            <div class="card">
+                <h3>KDE Plasma, Blimey</h3>
+                <p>A right gorgeous KDE Plasma desktop runnin' on Wayland, absolutely bangin'.</p>
+            </div>
+            <div class="card">
+                <h3>Dead Easy</h3>
+                <p>Sorted from the ground up to be a doddle for everyone, from proper geeks to absolute muppets.</p>
+            </div>
+        </div>
+
+        <h2>What You Need, Mate</h2>
+        <div class="card">
+            <p><i>The OS is currently gettin' hammered out in the shed and ain't ready for your daily cuppa just yet.</i></p>
+            <ul class="req-list">
+                <li><b>CPU:</b> 64-bit Processor (x86_64) - Need a proper brain in there</li>
+                <li><b>RAM:</b> 2GB Minimum (4GB Recommended, don't be stingy)</li>
+                <li><b>Storage:</b> 5GB Free Space in the boot</li>
+                <li><b>Graphics:</b> GPU wiv Wayland support (none of that rubbish)</li>
+            </ul>
+        </div>
+
+        <!-- НОВАТА КАРТА ЗА КОНТАКТИ -->
+        <h2>Give Us a Bell & Community</h2>
+        <div class="card">
+            <p>Stalk the development or pop down to our local (the community):</p>
+            <a href="https://github.com/yosifmoroz/ZentariOS/" class="contact-link" target="_blank">GitHub Project (The Shed)</a>
+            <a href="https://discord.gg/4ewEYKFBSg" class="contact-link" target="_blank">Discord Server (The Pub)</a>
+            <p>btw lads my email is at yosif69699@gmail.com pardon the 69, that was donkey's years ago😭✌️</p>
+        </div>
+
+        <h2>Nick It (Download)</h2>
+        <div class="download-box">
+            <p>Bri-ishOS ain't ready for the general public to nick just yet, hold yer horses.</p>
+            <span class="btn-disabled">No ISO yet, bruv</span>
+        </div>
+
+        <footer>
+            <p>2024 Bri-ishOS Project by yosifmoroz</p>
+            <p>Gemini finked it was 2024🥀 btw this bloody website was whipped up by Gemini✌️😭</p>
+            <p>Sod off Copilot</p>
+        </footer>
+    </div>
+
+    <!-- Logic for swapping the content -->
+    <script>
+        function toggleMode() {
+            const stdContent = document.getElementById('standard-content');
+            const britContent = document.getElementById('british-content');
+            const btn = document.getElementById('toggleBtn');
+
+            if (stdContent.style.display === 'none') {
+                // Switch to Standard
+                stdContent.style.display = 'block';
+                britContent.style.display = 'none';
+                btn.innerText = '🇬🇧 British Mode';
+                document.title = 'Bri-ishOS | The Future of Simplicity';
+            } else {
+                // Switch to British
+                stdContent.style.display = 'none';
+                britContent.style.display = 'block';
+                btn.innerText = '☕ Standard Mode';
+                document.title = 'Bri-ishOS | The Future of Simplicity, Innit';
+            }
+        }
+    </script>
 </body>
 </html>
