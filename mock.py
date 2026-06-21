@@ -10,7 +10,7 @@ import subprocess
 
 START_TIME = time.time()
 
-OS_NAME    = "ZentariOS"
+OS_NAME    = "Bri-ishOS"
 OS_VER     = "1.0.0"
 FS_DIR     = "/mnt"
 
@@ -62,12 +62,12 @@ def box(lines, width=64, title=""):
 # ══════════════════════════════════════════════
 
 LOGO_LINES = [
-    r"  ███████╗███████╗███╗   ██╗████████╗ █████╗ ██████╗ ██╗ ██████╗ ███████╗",
-    r"  ╚══███╔╝██╔════╝████╗  ██║╚══██╔══╝██╔══██╗██╔══██╗██║██╔═══██╗██╔════╝",
-    r"    ███╔╝ █████╗  ██╔██╗ ██║   ██║   ███████║██████╔╝██║██║   ██║███████╗",
-    r"   ███╔╝  ██╔══╝  ██║╚██╗██║   ██║   ██╔══██║██╔══██╗██║██║   ██║╚════██║",
-    r"  ███████╗███████╗██║ ╚████║   ██║   ██║  ██║██║  ██║██║╚██████╔╝███████║",
-    r"  ╚══════╝╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝ ╚═════╝ ╚══════╝",
+    r"  ██████╗ ██████╗ ██╗ █████╗ ██╗███████╗██╗  ██╗ ██████╗ ███████╗",
+    r"  ██╔══██╗██╔══██╗██║██╔═══╝ ██║██╔════╝██║  ██║██╔═══██╗██╔════╝",
+    r"  ██████╔╝██████╔╝██║█████╗  ██║███████╗███████║██║   ██║███████╗",
+    r"  ██╔══██╗██╔══██╗██║╚════╝  ██║╚════██║██╔══██║██║   ██║╚════██║",
+    r"  ██████╔╝██║  ██║██║        ██║███████║██║  ██║╚██████╔╝███████║",
+    r"  ╚══════╝╚═╝  ╚═╝╚═╝        ╚═╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝",
 ]
 
 def print_logo():
@@ -199,7 +199,7 @@ def main():
         confirm = prompt_str("Confirm Account Password", secret=True)
         if password == confirm: break
         print(red("  Passwords mismatch error.\n"))
-    hostname = prompt_str("System Local Hostname", default="zentari")
+    hostname = prompt_str("System Local Hostname", default="bri-ishos")
 
     # ── Step 5: Master Commit Execution ─────────────
     installer_header("Step 5 / 5  ─  Verification Summary")
@@ -208,7 +208,7 @@ def main():
         f"  {dim('Profile Base :')}  {white(PROFILES[profile_idx][0])}",
         f"  {dim('Package Size :')}  {white(str(len(chosen_pkgs)) + ' customized targets loaded')}",
         f"  {dim('Primary User :')}  {white(username)}",
-        f"  {dim('Target Host  :')}  {white(hostname)}",
+        f"  {dim('Target Host   :')}  {white(hostname)}",
         f"  {dim('Display Frame:')}  {white('KDE Plasma Engine (Wayland Master)')}",
     ], width=64, title="Deployment Configuration Map")
     print()
@@ -241,7 +241,7 @@ def main():
     for label, duration in steps:
         spinner_task(label, duration)
 
-    print(green("\n  ✓ ZentariOS core platform successfully built to target storage drive!"))
+    print(green("\n  ✓ Bri-ishOS core platform successfully built to target storage drive!"))
     print(dim("  Safe to unmount installer flash storage. Enter 'reboot' to boot into your OS.\n"))
 
 if __name__ == "__main__":
